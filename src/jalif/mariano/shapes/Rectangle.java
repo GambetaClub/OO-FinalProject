@@ -1,5 +1,6 @@
 package jalif.mariano.shapes;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 
@@ -7,6 +8,7 @@ public class Rectangle extends Shape{
 	
 	public Rectangle(int x, int y, int height, int width) {
 		super(x ,y , height, width);
+		this.setColor(Color.blue);
 	}
 	
 	public void resize(int x, int y) {
@@ -21,6 +23,7 @@ public class Rectangle extends Shape{
 
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(getColor());
 		g.drawRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
 		
 	}

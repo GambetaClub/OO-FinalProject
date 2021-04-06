@@ -41,9 +41,21 @@ public class CoolCanvas extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());
-				Rectangle r = new Rectangle(e.getX(), e.getY(), 5, 5);
+				
+				Rectangle r = new Rectangle(e.getX(), e.getY(), 100, 100);
+				Triangle t = new Triangle(e.getX(), e.getY(), 100, 100);
+				Circle c = new Circle(e.getX(), e.getY(), 100, 100);
+				Line l = new Line(e.getX(), e.getY(), 100, 100);
+				
 				shapes.add(r);
+				shapes.add(t);
+				shapes.add(c);
+				shapes.add(l);
+				
 				r.draw(getGraphics());
+				t.draw(getGraphics());
+				c.draw(getGraphics());
+				l.draw(getGraphics());
 			};
 			
 			@Override
