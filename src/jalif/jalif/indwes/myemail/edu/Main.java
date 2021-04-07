@@ -4,11 +4,11 @@ import javax.swing.JFrame;
 
 public class Main {
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Painting is cool");
-		frame.setSize(800, 800);
+		JFrame frame = new JFrame("Paint");
+		frame.setSize(550, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		CoolCanvas canvas = new CoolCanvas();
+		Canvas canvas = new Canvas();
 		frame.add(canvas);
 		
 		
