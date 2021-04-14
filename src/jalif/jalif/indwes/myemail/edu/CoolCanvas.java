@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+
 import javax.swing.JPanel;
 import jalif.mariano.shapes.*;
 
@@ -13,6 +14,7 @@ import jalif.mariano.shapes.*;
 public class CoolCanvas extends JPanel {
 	
 	private ArrayList<Shape> shapes;
+	public static int selection;
 	
 	public CoolCanvas() {
 		
@@ -52,10 +54,20 @@ public class CoolCanvas extends JPanel {
 				shapes.add(c);
 				shapes.add(l);
 				
-				r.draw(getGraphics());
-				t.draw(getGraphics());
-				c.draw(getGraphics());
-				l.draw(getGraphics());
+//				r.draw(getGraphics());
+//				t.draw(getGraphics());
+//				c.draw(getGraphics());
+//				l.draw(getGraphics());
+				
+				if(selection == 1) {
+					r.draw(getGraphics());
+				}else if(selection == 2) {
+					c.draw(getGraphics());
+				}else if(selection == 3) {
+					t.draw(getGraphics());
+				}else {
+					l.draw(getGraphics());
+				}
 			};
 			
 			@Override
@@ -65,6 +77,7 @@ public class CoolCanvas extends JPanel {
 			}
 			
 		});
+		
 	}
 	
 	@Override
@@ -74,4 +87,13 @@ public class CoolCanvas extends JPanel {
 			shape.draw(g);
 		}
 	}
+
+	public int getSelection() {
+		return selection;
+	}
+
+	public static void setSelection(int nselection) {
+		selection = nselection;
+	}
+
 }
