@@ -1,5 +1,6 @@
 package jalif.jalif.indwes.myemail.edu;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,7 +12,7 @@ import jalif.mariano.shapes.*;
 
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
-	
+
 	private ArrayList<Shape> shapes;
 	
 	private Shape tempShape = null;
@@ -24,9 +25,29 @@ public class Canvas extends JPanel {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				System.out.println("Mousee dragged " + e.getX() + ", " + e.getY());
-				tempShape = new Rectangle(e.getX(), e.getY(), 20, 20);
-				tempShape.draw(getGraphics());
+				if(tempShape == null) {
+					Rectangle r = new Rectangle(e.getX(), e.getY(), 10, 10);
+					tempShape = r;
+				}
+				int eX = e.getX();
+				int eY = e.getY();
+				int newWidth =  eX - tempShape.getX();
+				int newHeight = eY - tempShape.getY();
+				int newX = tempShape.getFirstX();
+				int newY = tempShape.getFirstY();
+				
+				if (newWidth < 0) {
+					newWidth = Math.abs(tempShape.getFirstX() - eX);
+					newX = eX;
+				}
+				if(newHeight < 0) {
+					newHeight = Math.abs(tempShape.getFirstY() - eY);
+					newY = eY;
+				}
+				
+				tempShape.resize(newWidth, newHeight, newX, newY);
+				shapes.add(tempShape);
+				repaint();
 			}
 
 			@Override
@@ -41,7 +62,8 @@ public class Canvas extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());
-				Rectangle r = new Rectangle(e.getX(), e.getY(), 20, 20);
+				Rectangle r = new Rectangle(e.getX(), e.getY(), 10, 10);
+				tempShape = r;
 				shapes.add(r);
 				r.draw(getGraphics());
 			};
@@ -66,6 +88,9 @@ public class Canvas extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		System.out.println("I'm repainting");
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 2000, 2000);
+		g.setColor(Color.black);
 		if(tempShape != null) {
 			tempShape.draw(g);
 		}
