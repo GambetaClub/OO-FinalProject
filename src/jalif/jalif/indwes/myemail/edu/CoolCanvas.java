@@ -13,8 +13,9 @@ import jalif.mariano.shapes.*;
 @SuppressWarnings("serial")
 public class CoolCanvas extends JPanel {
 	
+	
 	private ArrayList<Shape> shapes;
-	public static int selection;
+	private static int selection;
 	
 	public CoolCanvas() {
 		
