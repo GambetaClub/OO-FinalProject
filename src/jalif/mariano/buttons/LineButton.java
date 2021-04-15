@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import jalif.jalif.indwes.myemail.edu.CoolCanvas;
+import jalif.jalif.indwes.myemail.edu.Canvas;
 
 
 public class LineButton implements ActionListener{
@@ -16,7 +16,7 @@ public class LineButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a line.");
-		CoolCanvas.setSelection(4);
+		Canvas.setSelection(4);
 	}
 	
 

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import jalif.jalif.indwes.myemail.edu.CoolCanvas;
+import jalif.jalif.indwes.myemail.edu.Canvas;
 
 
 public class TriangleButton implements ActionListener{
@@ -16,7 +16,7 @@ public class TriangleButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a triangle.");
-		CoolCanvas.setSelection(3);
+		Canvas.setSelection(3);
 	}
 	
 

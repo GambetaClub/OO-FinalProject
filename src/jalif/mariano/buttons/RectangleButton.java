@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import jalif.jalif.indwes.myemail.edu.CoolCanvas;
+import jalif.jalif.indwes.myemail.edu.Canvas;
 
 
 
@@ -17,7 +17,7 @@ public class RectangleButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a rectangle.");
-		CoolCanvas.setSelection(1);
+		Canvas.setSelection(1);
 	}
 
 }

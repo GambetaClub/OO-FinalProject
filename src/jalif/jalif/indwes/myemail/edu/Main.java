@@ -8,12 +8,17 @@ import jalif.mariano.buttons.RectangleButton;
 import jalif.mariano.buttons.TriangleButton;
 
 public class Main {
+	
+	private static final int windowSize = 400;
+
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Painting is cool");
-		frame.setSize(800, 800);
+		
+		
+		JFrame frame = new JFrame("Paint");
+		frame.setSize(windowSize, windowSize);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		CoolCanvas canvas = new CoolCanvas();
+		Canvas canvas = new Canvas();
 		frame.add(canvas);
 		
 		JButton rectButton = new JButton("Rectangle");

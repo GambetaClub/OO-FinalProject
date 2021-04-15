@@ -12,13 +12,16 @@ public class Circle extends Shape {
 	
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
-		g.drawOval(super.getX() - (super.getWidth()/2), super.getY() - (super.getHeight()/2), super.getWidth(), super.getHeight());
+		g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+	
 	}
 	
 	@Override
-	public void resize(int x, int y) {
-		// TODO Auto-generated method stub
-		
+	public void resize(int width, int height, int x, int y) {
+		super.setY(y);
+		super.setX(x);
+		super.setWidth(width);
+		super.setHeight(height);
 	}
 	
 }

@@ -5,6 +5,10 @@ import java.awt.Graphics;
 
 public abstract class Shape {
 	private Color color;
+
+	private int firstX;
+	private int firstY;
+
 	private int x;
 	private int y;
 	
@@ -12,13 +16,15 @@ public abstract class Shape {
 	private int width;
 	
 	public Shape(int x, int y, int height, int width) {
+		this.firstX = x;
+		this.firstY = y;
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
 	}
 	
-	public abstract void resize(int x, int y);
+	public abstract void resize(int width, int height, int x, int y);
 	
 	public int getX() {
 		return x;
@@ -34,6 +40,14 @@ public abstract class Shape {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public int getFirstX() {
+		return firstX;
+	}
+
+	public int getFirstY() {
+		return firstY;
 	}
 
 	public int getHeight() {
