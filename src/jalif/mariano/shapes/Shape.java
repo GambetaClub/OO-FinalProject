@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public abstract class Shape {
 	private Color color;
-	// Just A Test Comment 
+
 	private int firstX;
 	private int firstY;
 

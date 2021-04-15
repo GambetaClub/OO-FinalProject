@@ -14,6 +14,7 @@ import jalif.mariano.shapes.*;
 public class Canvas extends JPanel {
 
 	private ArrayList<Shape> shapes;
+	private static int selection;
 	
 	private Shape tempShape = null;
 	
@@ -26,8 +27,15 @@ public class Canvas extends JPanel {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if(tempShape == null) {
-					Rectangle r = new Rectangle(e.getX(), e.getY(), 10, 10);
-					tempShape = r;
+					if(selection == 1) {
+						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+					}else if(selection == 2) {
+						tempShape = new Circle(e.getX(), e.getY(), 10, 10);
+					}else if(selection == 3) {
+						tempShape = new Triangle(e.getX(), e.getY(), 10, 10);
+					}else {
+						tempShape = new Line(e.getX(), e.getY(), 10, 10);
+					}
 				}
 				int eX = e.getX();
 				int eY = e.getY();
@@ -59,13 +67,22 @@ public class Canvas extends JPanel {
 		});
 		addMouseListener(new MouseAdapter() {
 			
-			@Override
+			
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());
-				Rectangle r = new Rectangle(e.getX(), e.getY(), 10, 10);
-				tempShape = r;
-				shapes.add(r);
-				r.draw(getGraphics());
+				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());					
+				Shape newShape;
+				if(selection == 1) {
+					newShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+				}else if(selection == 2) {
+					newShape = new Circle(e.getX(), e.getY(), 10, 10);
+				}else if(selection == 3) {
+					newShape = new Triangle(e.getX(), e.getY(), 10, 10);
+				}else {
+					newShape = new Line(e.getX(), e.getY(), 10, 10);
+				}
+
+				shapes.add(newShape);
+				repaint();
 			};
 			
 			@Override
@@ -97,5 +114,13 @@ public class Canvas extends JPanel {
 		for (Shape shape : shapes) {
 			shape.draw(g);
 		}
+	}
+
+	public static int getSelection() {
+		return selection;
+	}
+
+	public static void setSelection(int selection) {
+		Canvas.selection = selection;
 	}
 }
