@@ -5,14 +5,14 @@ import java.awt.Graphics;
 
 public class Circle extends Shape {
 
-	public Circle(int x, int y, int height, int width){
-		super(x,y,height,width);
-		this.setColor(Color.green);
+	public Circle(int x, int y, int height, int width, Color color){
+		super(x,y,height,width, color);
 	}
 	
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
-		g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		g.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+	
 	
 	}
 	

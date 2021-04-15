@@ -15,13 +15,14 @@ public abstract class Shape {
 	private int height;
 	private int width;
 	
-	public Shape(int x, int y, int height, int width) {
+	public Shape(int x, int y, int height, int width, Color color) {
 		this.firstX = x;
 		this.firstY = y;
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
+		this.color = color;
 	}
 	
 	public abstract void resize(int width, int height, int x, int y);

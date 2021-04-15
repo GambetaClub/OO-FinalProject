@@ -15,6 +15,7 @@ public class Canvas extends JPanel {
 
 	private ArrayList<Shape> shapes;
 	private static int selection;
+	private static Color color = Color.black;
 	
 	private Shape tempShape = null;
 	
@@ -28,13 +29,13 @@ public class Canvas extends JPanel {
 			public void mouseDragged(MouseEvent e) {
 				if(tempShape == null) {
 					if(selection == 1) {
-						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, color);
 					}else if(selection == 2) {
-						tempShape = new Circle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Circle(e.getX(), e.getY(), 10, 10, color);
 					}else if(selection == 3) {
-						tempShape = new Triangle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, color);
 					}else {
-						tempShape = new Line(e.getX(), e.getY(), 10, 10);
+						tempShape = new Line(e.getX(), e.getY(), 10, 10, color);
 					}
 				}
 				int eX = e.getX();
@@ -72,13 +73,13 @@ public class Canvas extends JPanel {
 				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());					
 				Shape newShape;
 				if(selection == 1) {
-					newShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+					newShape = new Rectangle(e.getX(), e.getY(), 10, 10, color);
 				}else if(selection == 2) {
-					newShape = new Circle(e.getX(), e.getY(), 10, 10);
+					newShape = new Circle(e.getX(), e.getY(), 10, 10, color);
 				}else if(selection == 3) {
-					newShape = new Triangle(e.getX(), e.getY(), 10, 10);
+					newShape = new Triangle(e.getX(), e.getY(), 10, 10, color);
 				}else {
-					newShape = new Line(e.getX(), e.getY(), 10, 10);
+					newShape = new Line(e.getX(), e.getY(), 10, 10, color);
 				}
 
 				shapes.add(newShape);
@@ -122,5 +123,13 @@ public class Canvas extends JPanel {
 
 	public static void setSelection(int selection) {
 		Canvas.selection = selection;
+	}
+
+	public static Color getColor() {
+		return color;
+	}
+
+	public static void setColor(Color color) {
+		Canvas.color = color;
 	}
 }
