@@ -17,7 +17,7 @@ public class RectangleButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a rectangle.");
-		Canvas.setSelection(1);
+		Canvas.setSelection("rectangle");
 	}
 
 }

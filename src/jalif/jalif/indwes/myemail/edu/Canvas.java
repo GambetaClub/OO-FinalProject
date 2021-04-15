@@ -14,7 +14,7 @@ import jalif.mariano.shapes.*;
 public class Canvas extends JPanel {
 
 	private ArrayList<Shape> shapes;
-	private static int selection;
+	private static String selection = "line";
 	
 	private Shape tempShape = null;
 	
@@ -27,33 +27,22 @@ public class Canvas extends JPanel {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if(tempShape == null) {
-					if(selection == 1) {
+					switch(selection) {
+					case "rectangle":
 						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10);
-					}else if(selection == 2) {
+						break;
+					case "circle":
 						tempShape = new Circle(e.getX(), e.getY(), 10, 10);
-					}else if(selection == 3) {
+						break;
+					case "triangle":
 						tempShape = new Triangle(e.getX(), e.getY(), 10, 10);
-					}else {
-						tempShape = new Line(e.getX(), e.getY(), 10, 10);
+						break;
+					default:
+						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY());
+						break;
 					}
 				}
-				int eX = e.getX();
-				int eY = e.getY();
-				int newWidth =  eX - tempShape.getX();
-				int newHeight = eY - tempShape.getY();
-				int newX = tempShape.getFirstX();
-				int newY = tempShape.getFirstY();
-				
-				if (newWidth < 0) {
-					newWidth = Math.abs(tempShape.getFirstX() - eX);
-					newX = eX;
-				}
-				if(newHeight < 0) {
-					newHeight = Math.abs(tempShape.getFirstY() - eY);
-					newY = eY;
-				}
-				
-				tempShape.resize(newWidth, newHeight, newX, newY);
+				tempShape.dragger(e.getX(), e.getY());
 				shapes.add(tempShape);
 				repaint();
 			}
@@ -65,23 +54,30 @@ public class Canvas extends JPanel {
 			}
 			
 		});
+		
 		addMouseListener(new MouseAdapter() {
-			
-			
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());					
-				Shape newShape;
-				if(selection == 1) {
-					newShape = new Rectangle(e.getX(), e.getY(), 10, 10);
-				}else if(selection == 2) {
-					newShape = new Circle(e.getX(), e.getY(), 10, 10);
-				}else if(selection == 3) {
-					newShape = new Triangle(e.getX(), e.getY(), 10, 10);
-				}else {
-					newShape = new Line(e.getX(), e.getY(), 10, 10);
-				}
 
-				shapes.add(newShape);
+			public void mouseClicked(MouseEvent e) {
+				Shape newShape;
+				int eX = e.getX();
+				int eY = e.getY();
+				switch(selection) {
+				case "rectangle":
+					newShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+					shapes.add(newShape);
+					break;
+				case "circle":
+					newShape = new Circle(e.getX(), e.getY(), 10, 10);
+					shapes.add(newShape);
+					break;
+				case "triangle":
+					newShape = new Triangle(e.getX(), e.getY(), 10, 10);
+					shapes.add(newShape);
+					break;
+				default:
+					System.out.println("Line should be dragged to be drawn");
+				}
+				
 				repaint();
 			};
 			
@@ -116,11 +112,11 @@ public class Canvas extends JPanel {
 		}
 	}
 
-	public static int getSelection() {
+	public static String getSelection() {
 		return selection;
 	}
 
-	public static void setSelection(int selection) {
-		Canvas.selection = selection;
+	public static void setSelection(String string) {
+		Canvas.selection = string;
 	}
 }

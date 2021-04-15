@@ -16,7 +16,7 @@ public class LineButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a line.");
-		Canvas.setSelection(4);
+		Canvas.setSelection("line");
 	}
 	
 

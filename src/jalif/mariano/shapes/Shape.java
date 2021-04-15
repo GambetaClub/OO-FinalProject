@@ -24,6 +24,8 @@ public abstract class Shape {
 		this.width = width;
 	}
 	
+	public abstract void dragger(int eX, int eY);
+	
 	public abstract void resize(int width, int height, int x, int y);
 	
 	public int getX() {

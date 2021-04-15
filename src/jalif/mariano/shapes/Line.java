@@ -16,11 +16,15 @@ public class Line extends Shape{
 	}
 
 	@Override
-	public void resize(int width, int height, int x, int y) {
-		super.setY(y);
-		super.setX(x);
-		super.setWidth(width);
-		super.setHeight(height);
+	public void resize(int firstX, int firstY, int changingX, int changingY) {
+		super.setWidth(changingX);
+		super.setHeight(changingY);
+	}
+
+	@Override
+	public void dragger(int eX, int eY) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

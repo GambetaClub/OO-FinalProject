@@ -16,7 +16,7 @@ public class TriangleButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a triangle.");
-		Canvas.setSelection(3);
+		Canvas.setSelection("triangle");
 	}
 	
 

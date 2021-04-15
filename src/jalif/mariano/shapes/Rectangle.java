@@ -25,5 +25,24 @@ public class Rectangle extends Shape{
 		g.fillRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
 		
 	}
+
+	@Override
+	public void dragger(int eX, int eY) {
+		int newWidth =  eX - this.getX();
+		int newHeight = eY - this.getY();
+		int newX = this.getFirstX();
+		int newY = this.getFirstY();
+		
+		if (newWidth < 0) {
+			newWidth = Math.abs(this.getFirstX() - eX);
+			newX = eX;
+		}
+		if(newHeight < 0) {
+			newHeight = Math.abs(this.getFirstY() - eY);
+			newY = eY;
+		}
+		
+		this.resize(newWidth, newHeight, newX, newY);
+	}
 	
 }

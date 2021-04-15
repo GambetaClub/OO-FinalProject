@@ -15,7 +15,7 @@ public class CircleButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(textField, "You have selected a circle.");
-		Canvas.setSelection(2);
+		Canvas.setSelection("circle");
 	}
 
 }
