@@ -25,12 +25,8 @@ public class CoolCanvas extends JPanel {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				System.out.println("Mousee dragged " + e.getX() + ", " + e.getY());
-				if(!shapes.isEmpty()) {
-					Shape lastShape = shapes.get(shapes.size()-1);
-					lastShape.resize(e.getX(), e.getY());
-					paintComponent(getGraphics());
-				}
+				
+				
 			}
 
 			@Override
