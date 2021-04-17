@@ -15,7 +15,9 @@ public abstract class Shape {
 	private int height;
 	private int width;
 	
-	public Shape(int x, int y, int height, int width, Color color) {
+	private int fillSelection;
+	
+	public Shape(int x, int y, int height, int width, Color color, int fillSelection) {
 		this.firstX = x;
 		this.firstY = y;
 		this.x = x;
@@ -23,6 +25,7 @@ public abstract class Shape {
 		this.height = height;
 		this.width = width;
 		this.color = color;
+		this.setFillSelection(fillSelection);
 	}
 	
 	public abstract void resize(int width, int height, int x, int y);
@@ -76,5 +79,15 @@ public abstract class Shape {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
+	public int getFillSelection() {
+		return fillSelection;
+	}
+
+	public void setFillSelection(int fillSelection) {
+		this.fillSelection = fillSelection;
+	}
+	
+	
 	
 }

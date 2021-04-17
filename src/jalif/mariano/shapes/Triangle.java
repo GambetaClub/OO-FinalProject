@@ -6,15 +6,20 @@ import java.awt.Graphics;
 
 public class Triangle extends Shape{
 
-	public Triangle(int x, int y, int height, int width, Color color) {
-		super(x,y,height,width,color);
+	public Triangle(int x, int y, int height, int width, Color color, int fillSelection) {
+		super(x,y,height,width,color,fillSelection);
 	}
 	
 	public void draw(Graphics g) {
 		int [] xCoords = {super.getX(), super.getX() - super.getWidth(), super.getX() + super.getWidth()};
 		int [] yCoords = {super.getY(), super.getY() + super.getWidth(), super.getY() + super.getWidth()};
 		g.setColor(super.getColor());
-		g.fillPolygon(xCoords, yCoords, 3);
+		if(super.getFillSelection() == 1) {
+			g.fillPolygon(xCoords, yCoords, 3);
+		}else if(super.getFillSelection() == 2) {
+			g.drawPolygon(xCoords, yCoords, 3);
+		}
+		
 	}
 
 	public void resize(int width, int height, int x, int y) {

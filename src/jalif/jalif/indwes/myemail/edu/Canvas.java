@@ -14,8 +14,11 @@ import jalif.mariano.shapes.*;
 public class Canvas extends JPanel {
 
 	private ArrayList<Shape> shapes;
-	private static int selection;
-	private static Color color = Color.black;
+	private static int defaultSelection = 1;
+	private static Color defaultColor = Color.black;
+	private static int shapeSelection = defaultSelection;
+	private static int fillSelection = defaultSelection;
+	private static Color color = defaultColor;
 	
 	private Shape tempShape = null;
 	
@@ -28,14 +31,14 @@ public class Canvas extends JPanel {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if(tempShape == null) {
-					if(selection == 1) {
-						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, color);
-					}else if(selection == 2) {
-						tempShape = new Circle(e.getX(), e.getY(), 10, 10, color);
-					}else if(selection == 3) {
-						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, color);
-					}else {
-						tempShape = new Line(e.getX(), e.getY(), 10, 10, color);
+					if(shapeSelection == 1) {
+						tempShape = new Line(e.getX(), e.getY(), 10, 10, color, fillSelection);
+					}else if(shapeSelection == 2) {
+						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, color, fillSelection);
+					}else if(shapeSelection == 3) {
+						tempShape = new Circle(e.getX(), e.getY(), 10, 10, color, fillSelection);
+					}else if(shapeSelection == 4){
+						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, color, fillSelection);
 					}
 				}
 				int eX = e.getX();
@@ -72,14 +75,14 @@ public class Canvas extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());					
 				Shape newShape;
-				if(selection == 1) {
-					newShape = new Rectangle(e.getX(), e.getY(), 10, 10, color);
-				}else if(selection == 2) {
-					newShape = new Circle(e.getX(), e.getY(), 10, 10, color);
-				}else if(selection == 3) {
-					newShape = new Triangle(e.getX(), e.getY(), 10, 10, color);
-				}else {
-					newShape = new Line(e.getX(), e.getY(), 10, 10, color);
+				if(shapeSelection == 2) {
+					newShape = new Rectangle(e.getX(), e.getY(), 10, 10, color, fillSelection);
+				}else if(shapeSelection == 3) {
+					newShape = new Circle(e.getX(), e.getY(), 10, 10, color, fillSelection);
+				}else if(shapeSelection == 4) {
+					newShape = new Triangle(e.getX(), e.getY(), 10, 10, color, fillSelection);
+				}else{
+					newShape = new Line(e.getX(), e.getY(), 10, 10, color, fillSelection);
 				}
 
 				shapes.add(newShape);
@@ -103,6 +106,7 @@ public class Canvas extends JPanel {
 		});
 	}
 	
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		System.out.println("I'm repainting");
@@ -118,11 +122,11 @@ public class Canvas extends JPanel {
 	}
 
 	public static int getSelection() {
-		return selection;
+		return shapeSelection;
 	}
 
-	public static void setSelection(int selection) {
-		Canvas.selection = selection;
+	public static void setSelection(int shapeSelection) {
+		Canvas.shapeSelection = shapeSelection;
 	}
 
 	public static Color getColor() {
@@ -131,5 +135,13 @@ public class Canvas extends JPanel {
 
 	public static void setColor(Color color) {
 		Canvas.color = color;
+	}
+	
+	public static int getFillSelection() {
+		return fillSelection;
+	}
+	
+	public static void setFillSelection(int fillSelection) {
+		Canvas.fillSelection = fillSelection;
 	}
 }
