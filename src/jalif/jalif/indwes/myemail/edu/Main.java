@@ -1,5 +1,7 @@
 package jalif.jalif.indwes.myemail.edu;
 
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import jalif.mariano.buttons.CircleButton;
@@ -9,13 +11,11 @@ import jalif.mariano.buttons.TriangleButton;
 
 public class Main {
 	
-	private static final int windowSize = 400;
-
 	public static void main(String[] args) {
 		
-		
 		JFrame frame = new JFrame("Paint");
-		frame.setSize(windowSize, windowSize);
+		frame.setSize(Canvas.getMaxWindowSize(), Canvas.getMaxWindowSize());
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Canvas canvas = new Canvas();

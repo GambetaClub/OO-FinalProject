@@ -13,6 +13,7 @@ import jalif.mariano.shapes.*;
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
 
+	private static int maxWindowSize = 600;
 	private ArrayList<Shape> shapes;
 	private static String selection = "line";
 	
@@ -25,8 +26,9 @@ public class Canvas extends JPanel {
 		addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
+			// (Overridden method)
 			public void mouseDragged(MouseEvent e) {
-				if (selection.equals("line") & tempShape != null){
+				if (tempShape instanceof Line){
 					tempShape.dragger(e.getX(), e.getY());
 				}
 				if(tempShape == null) {
@@ -66,15 +68,15 @@ public class Canvas extends JPanel {
 				int eY = e.getY();
 				switch(selection) {
 				case "rectangle":
-					newShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+					newShape = new Rectangle(eX, eY, 10, 10);
 					shapes.add(newShape);
 					break;
 				case "circle":
-					newShape = new Circle(e.getX(), e.getY(), 10, 10);
+					newShape = new Circle(eX, eY, 10, 10);
 					shapes.add(newShape);
 					break;
 				case "triangle":
-					newShape = new Triangle(e.getX(), e.getY(), 10, 10);
+					newShape = new Triangle(eX, eY, 10, 10);
 					shapes.add(newShape);
 					break;
 				default:
@@ -83,12 +85,6 @@ public class Canvas extends JPanel {
 				
 				repaint();
 			};
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				if(!shapes.isEmpty()) {
-				}
-			}
 			
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("Mouse released");
@@ -105,7 +101,7 @@ public class Canvas extends JPanel {
 	protected void paintComponent(Graphics g) {
 		System.out.println("I'm repainting");
 		g.setColor(Color.white);
-		g.fillRect(0, 0, 2000, 2000);
+		g.fillRect(0, 0, maxWindowSize, maxWindowSize);
 		g.setColor(Color.black);
 		if(tempShape != null) {
 			tempShape.draw(g);
@@ -119,7 +115,12 @@ public class Canvas extends JPanel {
 		return selection;
 	}
 
-	public static void setSelection(String string) {
-		Canvas.selection = string;
+	public static void setSelection(String selection) {
+		Canvas.selection = selection;
 	}
+	
+	public static int getMaxWindowSize() {
+		return maxWindowSize;
+	}
+	
 }

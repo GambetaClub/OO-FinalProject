@@ -34,11 +34,9 @@ public class Triangle extends Shape{
 		
 		if (newWidth < 0) {
 			newWidth = Math.abs(this.getFirstX() - eX);
-			newX = eX;
 		}
 		if(newHeight < 0) {
 			newHeight = Math.abs(this.getFirstY() - eY);
-			newY = eY;
 		}
 		
 		this.resize(newWidth, newHeight, newX, newY);

@@ -14,6 +14,13 @@ public class Line extends Shape{
 		g.setColor(super.getColor());
 		g.drawLine(super.getX(), super.getY(), super.getWidth(), super.getHeight());
 	}
+	
+	@Override
+	public void resize(int width, int height, int x, int y) {
+		// No need to implement this function, since the 
+		// real function doesn't need as many arguments.
+		// overloaded method.
+	}
 
 	public void resize(int endX, int endY) {
 		super.setWidth(endX);
@@ -25,10 +32,5 @@ public class Line extends Shape{
 		this.resize(endX, endY);
 	}
 
-	@Override
-	public void resize(int width, int height, int x, int y) {
-		// No need to implement this function, since the 
-		// real function doesn't need as many arguments
-	}
 
 }
