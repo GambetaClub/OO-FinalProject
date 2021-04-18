@@ -15,16 +15,20 @@ public class Line extends Shape{
 		g.drawLine(super.getX(), super.getY(), super.getWidth(), super.getHeight());
 	}
 
-	@Override
-	public void resize(int firstX, int firstY, int changingX, int changingY) {
-		super.setWidth(changingX);
-		super.setHeight(changingY);
+	public void resize(int endX, int endY) {
+		super.setWidth(endX);
+		super.setHeight(endY);
 	}
 
 	@Override
-	public void dragger(int eX, int eY) {
-		// TODO Auto-generated method stub
-		
+	public void dragger(int endX, int endY) {
+		this.resize(endX, endY);
+	}
+
+	@Override
+	public void resize(int width, int height, int x, int y) {
+		// No need to implement this function, since the 
+		// real function doesn't need as many arguments
 	}
 
 }

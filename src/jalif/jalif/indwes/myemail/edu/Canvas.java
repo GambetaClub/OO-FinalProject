@@ -26,6 +26,9 @@ public class Canvas extends JPanel {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
+				if (selection.equals("line") & tempShape != null){
+					tempShape.dragger(e.getX(), e.getY());
+				}
 				if(tempShape == null) {
 					switch(selection) {
 					case "rectangle":
