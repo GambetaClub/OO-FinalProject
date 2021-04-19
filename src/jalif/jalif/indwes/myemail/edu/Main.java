@@ -18,6 +18,7 @@ import jalif.mariano.shapebuttons.CircleButton;
 import jalif.mariano.shapebuttons.FillButton;
 import jalif.mariano.shapebuttons.LineButton;
 import jalif.mariano.shapebuttons.OutlineButton;
+import jalif.mariano.shapebuttons.PenButton;
 import jalif.mariano.shapebuttons.RectangleButton;
 import jalif.mariano.shapebuttons.TriangleButton;
 
@@ -60,6 +61,11 @@ public class Main {
 		lineButton.setBounds(10, 60, 465, lineButton.getMinimumSize().height);
 		shapePanel.add(lineButton);
 		lineButton.addActionListener(new LineButton());
+		
+		JButton penButton = new JButton ("Pen");
+		penButton.setBounds(10, 60, 465, penButton.getMinimumSize().height);
+		shapePanel.add(penButton);
+		penButton.addActionListener(new PenButton());
 		
 		JButton fillButton = new JButton("Fill");
 		fillButton.setBounds(10, 60, 465, fillButton.getMinimumSize().height);

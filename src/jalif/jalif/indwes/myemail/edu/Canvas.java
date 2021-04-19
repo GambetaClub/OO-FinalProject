@@ -15,7 +15,9 @@ public class Canvas extends JPanel {
 
 	private static int maxWindowSize = 600;
 	private ArrayList<Shape> shapes;
-	private static String shapeSelection = "line";
+	private static String shapeSelection = "pen";
+	private static int penWidth = 8;
+	private static int defShapeSize = 20;
 	private static Color colorSelection = Color.black;
 	private static boolean isFilled = true;
 	
@@ -30,22 +32,26 @@ public class Canvas extends JPanel {
 			@Override
 			// (Overridden method)
 			public void mouseDragged(MouseEvent e) {
+				// (instanceof)
 				if (tempShape instanceof Line){
 					tempShape.dragger(e.getX(), e.getY());
 				}
-				if(tempShape == null) {
+				else if(shapeSelection == "pen") {
+					tempShape = new Pen(e.getX(), e.getY(), penWidth, penWidth, colorSelection);
+				}
+				else if(tempShape == null) {
 					switch(shapeSelection) {
 					case "rectangle":
-						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Rectangle(e.getX(), e.getY(), defShapeSize, defShapeSize, colorSelection, isFilled);
 						break;
 					case "circle":
-						tempShape = new Circle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Circle(e.getX(), e.getY(), defShapeSize, defShapeSize, colorSelection, isFilled);
 						break;
 					case "triangle":
-						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Triangle(e.getX(), e.getY(), defShapeSize, defShapeSize, colorSelection, isFilled);
 						break;
 					default:
-						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY(), colorSelection, isFilled);
+						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY(), colorSelection);
 						break;
 					}
 				}
@@ -70,17 +76,20 @@ public class Canvas extends JPanel {
 				int eY = e.getY();
 				switch(shapeSelection) {
 				case "rectangle":
-					newShape = new Rectangle(eX, eY, 10, 10, colorSelection, isFilled);
+					newShape = new Rectangle(eX, eY, defShapeSize, defShapeSize, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
 				case "circle":
-					newShape = new Circle(eX, eY, 10, 10, colorSelection, isFilled);
+					newShape = new Circle(eX, eY, defShapeSize, defShapeSize, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
 				case "triangle":
-					newShape = new Triangle(eX, eY, 10, 10, colorSelection, isFilled);
+					newShape = new Triangle(eX, eY, defShapeSize, defShapeSize, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
+				case "pen":
+					newShape = new Pen(eX, eY, penWidth, penWidth, colorSelection);
+					shapes.add(newShape);
 				default:
 					System.out.println("Line should be dragged to be drawn");
 				}

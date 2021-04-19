@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class Line extends Shape{
 
-	public Line(int x, int y, int x2, int y2, Color color, boolean isFilled) {
-		super(x, y, x2, y2, color,isFilled);
+	public Line(int x, int y, int x2, int y2, Color color) {
+		super(x, y, x2, y2, color,true);
 	}
 	
 	public void draw(Graphics g) {
