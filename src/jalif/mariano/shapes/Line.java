@@ -16,9 +16,10 @@ public class Line extends Shape{
 	
 	@Override
 	public void resize(int width, int height, int x, int y) {
-		// No need to implement this function, since the 
-		// real function doesn't need as many arguments.
-		// overloaded method.
+		super.setX(x);
+		super.setY(y);
+		super.setWidth(width);
+		super.setHeight(height);
 	}
 
 	// (Overloading method)
