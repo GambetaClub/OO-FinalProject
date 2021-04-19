@@ -20,6 +20,7 @@ import jalif.mariano.shapebuttons.LineButton;
 import jalif.mariano.shapebuttons.OutlineButton;
 import jalif.mariano.shapebuttons.RectangleButton;
 import jalif.mariano.shapebuttons.TriangleButton;
+import jalif.mariano.shapebuttons.UndoButton;
 
 public class Main {
 
@@ -71,6 +72,10 @@ public class Main {
 		shapePanel.add(outlineButton);
 		outlineButton.addActionListener(new OutlineButton());
 		
+		JButton undoButton = new JButton ("Undo");
+		undoButton.setBounds(10, 60, 465, outlineButton.getMinimumSize().height);
+		shapePanel.add(undoButton);
+		undoButton.addActionListener(new UndoButton(canvas));
 		
 		JPanel colorPanel = new JPanel(new GridLayout(9, 1, 5, 5));
 		colorPanel.setBounds(10, 30, 465, colorPanel.getMinimumSize().height);

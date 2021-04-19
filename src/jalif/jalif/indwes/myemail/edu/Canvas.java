@@ -14,6 +14,7 @@ import jalif.mariano.shapes.*;
 public class Canvas extends JPanel {
 
 	private static int maxWindowSize = 600;
+	private static int defaultShapeSize = 10;
 	private ArrayList<Shape> shapes;
 	private static String shapeSelection = "line";
 	private static Color colorSelection = Color.black;
@@ -36,13 +37,13 @@ public class Canvas extends JPanel {
 				if(tempShape == null) {
 					switch(shapeSelection) {
 					case "rectangle":
-						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Rectangle(e.getX(), e.getY(), defaultShapeSize, defaultShapeSize, colorSelection, isFilled);
 						break;
 					case "circle":
-						tempShape = new Circle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Circle(e.getX(), e.getY(), defaultShapeSize, defaultShapeSize, colorSelection, isFilled);
 						break;
 					case "triangle":
-						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
+						tempShape = new Triangle(e.getX(), e.getY(), defaultShapeSize, defaultShapeSize, colorSelection, isFilled);
 						break;
 					default:
 						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY(), colorSelection, isFilled);
@@ -84,7 +85,6 @@ public class Canvas extends JPanel {
 				default:
 					System.out.println("Line should be dragged to be drawn");
 				}
-				
 				repaint();
 			};
 			
@@ -112,6 +112,14 @@ public class Canvas extends JPanel {
 		for (Shape shape : shapes) {
 			shape.draw(g);
 		}
+	}
+	
+	public void undo() {
+		if(shapes.size() == 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		shapes.remove(shapes.size()-1);
+		repaint();
 	}
 	
 	
@@ -145,4 +153,9 @@ public class Canvas extends JPanel {
 		
 	}
 	
+	public int numberOfShapes() {
+		return shapes.size();
+	}
+
+
 }
