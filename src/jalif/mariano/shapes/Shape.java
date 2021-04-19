@@ -42,6 +42,12 @@ public abstract class Shape {
 	}
 	
 	/**
+	 * Each shape is in charge of drawing itself, so each class that inherits from Shape will draw itself.
+	 * @param g
+	 */
+	public abstract void draw(Graphics g);
+	
+	/**
 	 * This function will be implemented by each class that inherits from Shape.
 	 * @param eX
 	 * @param eY
@@ -96,8 +102,6 @@ public abstract class Shape {
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
-	public abstract void draw(Graphics g);
 
 	public Color getColor() {
 		return color;

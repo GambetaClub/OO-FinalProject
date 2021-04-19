@@ -7,6 +7,9 @@ import jalif.jalif.indwes.myemail.edu.Canvas;
 
 public class RectangleButton implements ActionListener{
 	
+	/**
+	 * This method overrides the actionPerformed method and uses it to set the present shape selection to a rectangle.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Canvas.setShapeSelection("rectangle");
