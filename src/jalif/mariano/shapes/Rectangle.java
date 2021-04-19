@@ -6,24 +6,25 @@ import java.awt.Graphics;
 
 public class Rectangle extends Shape{
 	
-	public Rectangle(int x, int y, int height, int width) {
-		super(x ,y , height, width);
-		this.setColor(Color.blue);
+	public Rectangle(int x, int y, int height, int width, Color color, boolean isFilled){
+		super(x, y, height, width, color, isFilled);
 	}
+	
+	public void draw(Graphics g) {
+		g.setColor(super.getColor());
+		if(super.getIsFilled()) {
+			g.fillRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		}else {
+			g.drawRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		}
+	}
+	
 	
 	public void resize(int width, int height, int x, int y) {
 		super.setY(y);
 		super.setX(x);
 		super.setWidth(width);
 		super.setHeight(height);
-	}
-
-	@Override
-	public void draw(Graphics g) {
-		g.setColor(getColor());
-		g.drawRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
-		g.fillRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
-		
 	}
 
 	@Override
@@ -44,5 +45,4 @@ public class Rectangle extends Shape{
 		
 		this.resize(newWidth, newHeight, newX, newY);
 	}
-	
 }

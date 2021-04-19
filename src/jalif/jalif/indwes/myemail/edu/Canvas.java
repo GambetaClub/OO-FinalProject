@@ -15,7 +15,9 @@ public class Canvas extends JPanel {
 
 	private static int maxWindowSize = 600;
 	private ArrayList<Shape> shapes;
-	private static String selection = "line";
+	private static String shapeSelection = "line";
+	private static Color colorSelection = Color.black;
+	private static boolean isFilled = true;
 	
 	private Shape tempShape = null;
 	
@@ -32,18 +34,18 @@ public class Canvas extends JPanel {
 					tempShape.dragger(e.getX(), e.getY());
 				}
 				if(tempShape == null) {
-					switch(selection) {
+					switch(shapeSelection) {
 					case "rectangle":
-						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Rectangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
 						break;
 					case "circle":
-						tempShape = new Circle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Circle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
 						break;
 					case "triangle":
-						tempShape = new Triangle(e.getX(), e.getY(), 10, 10);
+						tempShape = new Triangle(e.getX(), e.getY(), 10, 10, colorSelection, isFilled);
 						break;
 					default:
-						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY());
+						tempShape = new Line(e.getX(), e.getY(), e.getX(), e.getY(), colorSelection, isFilled);
 						break;
 					}
 				}
@@ -66,17 +68,17 @@ public class Canvas extends JPanel {
 				Shape newShape;
 				int eX = e.getX();
 				int eY = e.getY();
-				switch(selection) {
+				switch(shapeSelection) {
 				case "rectangle":
-					newShape = new Rectangle(eX, eY, 10, 10);
+					newShape = new Rectangle(eX, eY, 10, 10, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
 				case "circle":
-					newShape = new Circle(eX, eY, 10, 10);
+					newShape = new Circle(eX, eY, 10, 10, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
 				case "triangle":
-					newShape = new Triangle(eX, eY, 10, 10);
+					newShape = new Triangle(eX, eY, 10, 10, colorSelection, isFilled);
 					shapes.add(newShape);
 					break;
 				default:
@@ -97,6 +99,7 @@ public class Canvas extends JPanel {
 		});
 	}
 	
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		System.out.println("I'm repainting");
@@ -110,17 +113,36 @@ public class Canvas extends JPanel {
 			shape.draw(g);
 		}
 	}
-
-	public static String getSelection() {
-		return selection;
-	}
-
-	public static void setSelection(String selection) {
-		Canvas.selection = selection;
-	}
+	
 	
 	public static int getMaxWindowSize() {
 		return maxWindowSize;
+	}
+
+	public static String getShapeSelection() {
+		return shapeSelection;
+	}
+
+	public static void setShapeSelection(String selection) {
+		Canvas.shapeSelection = selection;
+	}
+	
+	public static boolean getIsFilled() {
+		return isFilled;
+	}
+
+	public static void setIsFilled(boolean isFilled) {
+		Canvas.isFilled = isFilled;
+		
+	}
+	
+	public static Color getColorSelection() {
+		return colorSelection;
+	}
+
+	public static void setColorSelection(Color colorSelection) {
+		Canvas.colorSelection = colorSelection;
+		
 	}
 	
 }

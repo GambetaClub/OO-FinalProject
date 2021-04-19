@@ -15,13 +15,17 @@ public abstract class Shape {
 	private int height;
 	private int width;
 	
-	public Shape(int x, int y, int height, int width) {
+	private boolean isFilled;
+	
+	public Shape(int x, int y, int height, int width, Color color, boolean isFilled) {
 		this.firstX = x;
 		this.firstY = y;
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
+		this.color = color;
+		this.isFilled = isFilled;
 	}
 	
 	public abstract void dragger(int eX, int eY);
@@ -77,5 +81,15 @@ public abstract class Shape {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
+	public boolean getIsFilled() {
+		return isFilled;
+	}
+
+	public void setIsFilled(boolean isFilled) {
+		this.isFilled = isFilled;
+	}
+	
+	
 	
 }

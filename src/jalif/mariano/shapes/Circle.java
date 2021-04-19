@@ -5,15 +5,17 @@ import java.awt.Graphics;
 
 public class Circle extends Shape {
 
-	public Circle(int x, int y, int height, int width){
-		super(x,y,height,width);
-		this.setColor(Color.green);
+	public Circle(int x, int y, int height, int width, Color color, boolean isFilled){
+		super(x,y,height,width, color, isFilled);
 	}
 	
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
-		g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
-	
+		if(super.getIsFilled()) {
+			g.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		}else {
+			g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		}
 	}
 	
 	@Override
