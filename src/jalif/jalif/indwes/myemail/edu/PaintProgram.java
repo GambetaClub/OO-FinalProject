@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PaintStartup {
+public class PaintProgram {
 	
 	private static int defaultGridRows = 9;
 	private static int defaultGridColumns = 1;
