@@ -13,7 +13,7 @@ import jalif.mariano.shapes.*;
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
 
-	private static int maxWindowSize = 600;
+	private static int maxWindowSize = 650;
 	private ArrayList<Shape> shapes;
 	private static String shapeSelection = "pen";
 	private static int penWidth = 8;
