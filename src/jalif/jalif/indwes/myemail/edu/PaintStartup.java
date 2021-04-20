@@ -24,6 +24,10 @@ import jalif.mariano.shapebuttons.TriangleButton;
 import jalif.mariano.shapebuttons.UndoButton;
 
 public class PaintStartup {
+	
+	private static int defaultGridRows = 9;
+	private static int defaultGridColumns = 1;
+	private static int defaultGridPadding = 5;
 	/**
 	 * The start function declares and initializes all the JFrames and JPanels needed that every functionality of our program is built upon.
 	 */
@@ -49,7 +53,6 @@ public class PaintStartup {
 		 * The canvas is added to the center of the mainPanel.
 		 */
 		Canvas canvas = new Canvas();
-		canvas.setBounds(0, 0, 500, 300);
 		mainPanel.add(canvas, BorderLayout.CENTER);
 		
 		/*
@@ -113,7 +116,7 @@ public class PaintStartup {
 		 * The colorPanel is a JPanel which utilizes a GridLayout to organize buttons from the top to the bottom.
 		 * It is set up to have more rows than are actually filled to minimize the size of each button on it.
 		 */
-		JPanel colorPanel = new JPanel(new GridLayout(9, 1, 5, 5));
+		JPanel colorPanel = new JPanel(new GridLayout(defaultGridRows, defaultGridColumns, defaultGridPadding, defaultGridPadding));
 		mainPanel.add(colorPanel, BorderLayout.WEST);
 		
 		/*
