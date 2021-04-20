@@ -1,8 +1,5 @@
 package jalif.jalif.indwes.myemail.edu;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.awt.Color;
 
 import org.junit.jupiter.api.Test;
