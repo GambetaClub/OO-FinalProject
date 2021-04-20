@@ -32,7 +32,11 @@ public class Canvas extends JPanel {
 		addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
-			// (Overridden method)
+			  /** (Overridden method)
+			  * Checks if there is already a tempShape, if not
+			  * it creates a new one and saves it for if the user
+			  * keeps dragging.
+			  */
 			public void mouseDragged(MouseEvent e) {
 				if(tempShape == null) {
 					switch(shapeSelection) {
@@ -53,20 +57,26 @@ public class Canvas extends JPanel {
 							break;
 					}
 				}
+				/* Calls the function of tempShape (polymorphism)
+				 * which takes care of resizing itself.
+				 * 
+				 */
 				tempShape.dragger(e.getX(), e.getY());
 				repaint();
 			}
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
 		
 		addMouseListener(new MouseAdapter() {
 
+			/**
+			 * Creates new shape and immediately adds it to 
+			 * the array list.
+			 */
 			public void mouseClicked(MouseEvent e) {
 				Shape newShape;
 				int eX = e.getX();
@@ -96,7 +106,6 @@ public class Canvas extends JPanel {
 			};
 			
 			public void mouseReleased(MouseEvent e) {
-				System.out.println("Mouse released");
 				if(tempShape != null) {
 					shapes.add(tempShape);
 				}
@@ -108,14 +117,21 @@ public class Canvas extends JPanel {
 	
 	
 	@Override
+	/**
+	 * (Overriden method)
+	 * Function which takes care of drawing the 
+	 * different shapes.
+	 */
 	protected void paintComponent(Graphics g) {
-		System.out.println("I'm repainting");
 		g.setColor(Color.white);
 		g.fillRect(0, 0, maxWindowSize, maxWindowSize);
 		g.setColor(Color.black);
-		Graphics2D g2 = (Graphics2D) g;	
+		Graphics2D g2 = (Graphics2D) g;	// Necessary for the shapes' thickness
 
-		for (Shape shape : shapes) {
+		/**
+		 * Draws every single shape with its correspondent thickness. 
+		 */
+		for (Shape shape : shapes) { 
 			g2.setStroke(new BasicStroke(shape.getThickness()));
 			shape.draw(g2);
 		}
@@ -182,7 +198,10 @@ public class Canvas extends JPanel {
 		return shapeThickness;
 	}
 
-
+	/**
+	 * Handles the possible error of having thickness
+	 * equal zero. 
+	 */
 	public static void setShapeThickness(float shapeThickness) {
 		if(shapeThickness <= 0) {
 			throw new IllegalArgumentException();
