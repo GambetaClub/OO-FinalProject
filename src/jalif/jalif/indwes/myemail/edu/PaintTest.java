@@ -17,6 +17,7 @@ class PaintTest {
 	void test1() {
 		Canvas c = new Canvas();
 		Rectangle r = new Rectangle(10, 10, 10, 10, Color.blue, true);
+
 		Circle circle = new Circle(10,10,10,10,Color.black,false);
 		Line line = new Line(10,10,10,10,Color.pink);
 		c.addShape(line);

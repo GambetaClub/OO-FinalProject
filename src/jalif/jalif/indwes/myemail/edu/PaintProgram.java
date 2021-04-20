@@ -134,6 +134,28 @@ public class PaintProgram {
 			}
 		});
 		
+		JButton increaseButton = new JButton ("Increase width");
+		usefulToolPanel.add(increaseButton);
+		increaseButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeThickness(Canvas.getShapeThickness() + 1);
+			}
+		});
+		
+		JButton decreaseButton = new JButton ("Decrease width");
+		usefulToolPanel.add(decreaseButton);
+		decreaseButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Canvas.setShapeThickness(Canvas.getShapeThickness() - 1);
+				}catch(IllegalArgumentException exception) {
+					System.out.println("The shape thickness cannot be zero.");
+				}
+			}
+		});
+		
 		JButton undoButton = new JButton ("Undo");
 		usefulToolPanel.add(undoButton);
 		undoButton.addActionListener(new ActionListener() {

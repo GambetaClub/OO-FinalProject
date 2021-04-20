@@ -41,6 +41,7 @@ public abstract class Shape {
 		this.isFilled = isFilled;
 	}
 	
+	
 	/**
 	 * Each shape is in charge of drawing itself, so each class that inherits from Shape will draw itself.
 	 * @param g
