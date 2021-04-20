@@ -63,7 +63,7 @@ public class PaintProgram {
 		topToolPanel.add(usefulToolPanel, BorderLayout.EAST);
 		
 		/*
-		 * Each of the next four buttons added represent an option to choose a certain shape to draw.
+		 * Each of the next five buttons added represent an option to choose a certain shape to draw.
 		 * They all get added to the shapeToolsPanel from left to right.
 		 */
 		JButton rectButton = new JButton("Rectangle");
@@ -99,6 +99,15 @@ public class PaintProgram {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Canvas.setShapeSelection("line");
+			}
+		});
+		
+		JButton penButton = new JButton ("Pen");
+		shapeToolsPanel.add(penButton);
+		penButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("pen");
 			}
 		});
 		

@@ -100,7 +100,7 @@ public class Canvas extends JPanel {
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("Mouse released");
 				if(tempShape != null) {
-					getShapes().add(tempShape);
+					shapes.add(tempShape);
 				}
 				tempShape = null;
 			}
@@ -147,24 +147,18 @@ public class Canvas extends JPanel {
 		
 	}
 	
-	public static Color getColorSelection() {
-		return colorSelection;
-	}
-
 	public static void setColorSelection(Color colorSelection) {
 		Canvas.colorSelection = colorSelection;
 		
 	}
 	
+	public static Color getColorSelection() {
+		return colorSelection;
+	}
+	
 	public int numberOfShapes() {
-		return getShapes().size();
+		return shapes.size();
 	}
-
-
-	public ArrayList<Shape> getShapes() {
-		return shapes;
-	}
-
 
 	public void setShapes(ArrayList<Shape> shapes) {
 		this.shapes = shapes;
@@ -176,7 +170,10 @@ public class Canvas extends JPanel {
 		}
 		shapes.remove(shapes.size()-1);
 		repaint();
-		
+	}
+	
+	public void addShape(Shape shape) {
+		shapes.add(shape);
 	}
 	
 }
