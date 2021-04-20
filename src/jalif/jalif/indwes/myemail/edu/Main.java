@@ -6,7 +6,7 @@ public class Main {
 	 * The only function of the main is to call the start function and begin the program.
 	 */
 	public static void main(String[] args) {
-		PaintStartup p = new PaintStartup();
+		PaintProgram p = new PaintProgram();
 		p.start();
 	}
 }

@@ -24,7 +24,7 @@ public class Canvas extends JPanel {
 	
 	public Canvas() {
 		
-		shapes = new ArrayList<Shape>();
+		setShapes(new ArrayList<Shape>());
 		
 		addMouseMotionListener(new MouseMotionListener() {
 			
@@ -51,7 +51,7 @@ public class Canvas extends JPanel {
 					}
 				}
 				tempShape.dragger(e.getX(), e.getY());
-				shapes.add(tempShape);
+				getShapes().add(tempShape);
 				repaint();
 			}
 
@@ -72,15 +72,15 @@ public class Canvas extends JPanel {
 				switch(shapeSelection) {
 				case "rectangle":
 					newShape = new Rectangle(eX, eY, 10, 10, colorSelection, isFilled);
-					shapes.add(newShape);
+					getShapes().add(newShape);
 					break;
 				case "circle":
 					newShape = new Circle(eX, eY, 10, 10, colorSelection, isFilled);
-					shapes.add(newShape);
+					getShapes().add(newShape);
 					break;
 				case "triangle":
 					newShape = new Triangle(eX, eY, 10, 10, colorSelection, isFilled);
-					shapes.add(newShape);
+					getShapes().add(newShape);
 					break;
 				default:
 					System.out.println("Line should be dragged to be drawn");
@@ -91,7 +91,7 @@ public class Canvas extends JPanel {
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("Mouse released");
 				if(tempShape != null) {
-					shapes.add(tempShape);
+					getShapes().add(tempShape);
 				}
 				tempShape = null;
 			}
@@ -109,16 +109,16 @@ public class Canvas extends JPanel {
 		if(tempShape != null) {
 			tempShape.draw(g);
 		}
-		for (Shape shape : shapes) {
+		for (Shape shape : getShapes()) {
 			shape.draw(g);
 		}
 	}
 	
 	public void undo() {
-		if(shapes.size() == 0) {
+		if(getShapes().size() == 0) {
 			throw new IndexOutOfBoundsException();
 		}
-		shapes.remove(shapes.size()-1);
+		getShapes().remove(getShapes().size()-1);
 		repaint();
 	}
 	
@@ -154,7 +154,17 @@ public class Canvas extends JPanel {
 	}
 	
 	public int numberOfShapes() {
-		return shapes.size();
+		return getShapes().size();
+	}
+
+
+	public ArrayList<Shape> getShapes() {
+		return shapes;
+	}
+
+
+	public void setShapes(ArrayList<Shape> shapes) {
+		this.shapes = shapes;
 	}
 
 
