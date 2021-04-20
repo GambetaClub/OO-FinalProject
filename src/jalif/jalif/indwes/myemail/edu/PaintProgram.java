@@ -63,7 +63,7 @@ public class PaintProgram {
 		topToolPanel.add(usefulToolPanel, BorderLayout.EAST);
 		
 		/*
-		 * Each of the next four buttons added represent an option to choose a certain shape to draw.
+		 * Each of the next five buttons added represent an option to choose a certain shape to draw.
 		 * They all get added to the shapeToolsPanel from left to right.
 		 */
 		JButton rectButton = new JButton("Rectangle");
@@ -102,6 +102,15 @@ public class PaintProgram {
 			}
 		});
 		
+		JButton penButton = new JButton ("Pen");
+		shapeToolsPanel.add(penButton);
+		penButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("pen");
+			}
+		});
+		
 		
 		/*
 		 * The following three buttons are useful tools for the program to use: the option to choose whether or not to fill shapes, and the undo option.
@@ -122,6 +131,28 @@ public class PaintProgram {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Canvas.setIsFilled(false);
+			}
+		});
+		
+		JButton increaseButton = new JButton ("Increase width");
+		usefulToolPanel.add(increaseButton);
+		increaseButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeThickness(Canvas.getShapeThickness() + 1);
+			}
+		});
+		
+		JButton decreaseButton = new JButton ("Decrease width");
+		usefulToolPanel.add(decreaseButton);
+		decreaseButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Canvas.setShapeThickness(Canvas.getShapeThickness() - 1);
+				}catch(IllegalArgumentException exception) {
+					System.out.println("The shape thickness cannot be zero.");
+				}
 			}
 		});
 		

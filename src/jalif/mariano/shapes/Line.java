@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Line extends Shape{
-	
 	/**
 	 * This function takes all the items given to it and passes them in to the super constructor, allowing it to create the shape.
 	 */

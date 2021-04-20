@@ -15,7 +15,7 @@ import jalif.mariano.shapes.*;
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
 
-	private static int maxWindowSize = 600;
+	private static int maxWindowSize = 900;
 	private ArrayList<Shape> shapes;
 	private static String shapeSelection = "pen";
 	private static int defShapeSize = 20;
@@ -86,7 +86,9 @@ public class Canvas extends JPanel {
 						break;
 					case "pen":
 						newShape = new Pen(eX, eY, shapeThickness , colorSelection);
+						newShape.dragger(eX, eY);
 						shapes.add(newShape);
+
 				default:
 					System.out.println("Line should be dragged to be drawn");
 				}
@@ -111,9 +113,8 @@ public class Canvas extends JPanel {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, maxWindowSize, maxWindowSize);
 		g.setColor(Color.black);
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setStroke(new BasicStroke(shapeThickness));		
-		
+		Graphics2D g2 = (Graphics2D) g;	
+
 		for (Shape shape : shapes) {
 			g2.setStroke(new BasicStroke(shape.getThickness()));
 			shape.draw(g2);
@@ -147,24 +148,18 @@ public class Canvas extends JPanel {
 		
 	}
 	
-	public static Color getColorSelection() {
-		return colorSelection;
-	}
-
 	public static void setColorSelection(Color colorSelection) {
 		Canvas.colorSelection = colorSelection;
 		
 	}
 	
+	public static Color getColorSelection() {
+		return colorSelection;
+	}
+	
 	public int numberOfShapes() {
-		return getShapes().size();
+		return shapes.size();
 	}
-
-
-	public ArrayList<Shape> getShapes() {
-		return shapes;
-	}
-
 
 	public void setShapes(ArrayList<Shape> shapes) {
 		this.shapes = shapes;
@@ -176,7 +171,23 @@ public class Canvas extends JPanel {
 		}
 		shapes.remove(shapes.size()-1);
 		repaint();
-		
+	}
+	
+	public void addShape(Shape shape) {
+		shapes.add(shape);
+	}
+
+
+	public static float getShapeThickness() {
+		return shapeThickness;
+	}
+
+
+	public static void setShapeThickness(float shapeThickness) {
+		if(shapeThickness <= 0) {
+			throw new IllegalArgumentException();
+		}
+		Canvas.shapeThickness = shapeThickness;
 	}
 	
 }
