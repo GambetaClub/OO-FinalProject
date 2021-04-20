@@ -37,8 +37,8 @@ public class Circle extends Shape {
 
 	@Override
 	public void dragger(int eX, int eY) {
-		int newWidth =  eX - this.getX();
-		int newHeight = eY - this.getY();
+		int newWidth =  eX - this.getFirstX();
+		int newHeight = eY - this.getFirstY();
 		int newX = this.getFirstX();
 		int newY = this.getFirstY();
 		
