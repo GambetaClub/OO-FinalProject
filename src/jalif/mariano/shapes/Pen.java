@@ -9,8 +9,8 @@ public class Pen extends Shape{
 	private ArrayList<Integer> yPoints;
 	private static int defSize = 0;
 	
-	public Pen(int x, int y, Color color) {
-		super(x, y, defSize, defSize, color, false);
+	public Pen(int x, int y, float thickness, Color color) {
+		super(x, y, defSize, defSize, thickness, color, false);
 		this.xPoints = new ArrayList<Integer>();
 		this.yPoints = new ArrayList<Integer>();
 		this.dragger(x, y);

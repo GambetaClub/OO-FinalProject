@@ -9,8 +9,8 @@ public class Rectangle extends Shape{
 	/**
 	 * This function takes all the items given to it and passes them in to the super constructor, allowing it to create the shape.
 	 */
-	public Rectangle(int x, int y, int height, int width, Color color, boolean isFilled){
-		super(x, y, height, width, color, isFilled);
+	public Rectangle(int x, int y, int height, int width, float thickness, Color color, boolean isFilled){
+		super(x, y, height, width, thickness, color, isFilled);
 	}
 	
 	/**

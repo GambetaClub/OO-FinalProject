@@ -11,7 +11,7 @@ class PaintTest {
 	@Test
 	void test1() {
 		Canvas c = new Canvas();
-		Rectangle r = new Rectangle(10, 10, 10, 10, Color.blue, true);
+		Rectangle r = new Rectangle(10, 10, 10, 10, 5, Color.blue, true);
 		c.getShapes().add(r);
 	}
 	

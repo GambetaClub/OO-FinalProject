@@ -17,6 +17,8 @@ public abstract class Shape {
 	private int x;
 	private int y;
 	
+	private float thickness;
+	
 	private int height;
 	private int width;
 	
@@ -30,11 +32,12 @@ public abstract class Shape {
 	 * @param color defines the color of each shape created.
 	 * @param isFilled defines whether or not the shape will be drawn with an outline or if it will be drawn filled.
 	 */
-	public Shape(int x, int y, int height, int width, Color color, boolean isFilled) {
+	public Shape(int x, int y, int height, int width, float thickness,  Color color, boolean isFilled) {
 		this.firstX = x;
 		this.firstY = y;
 		this.x = x;
 		this.y = y;
+		this.setThickness(thickness);
 		this.height = height;
 		this.width = width;
 		this.color = color;
@@ -118,6 +121,16 @@ public abstract class Shape {
 
 	public void setIsFilled(boolean isFilled) {
 		this.isFilled = isFilled;
+	}
+
+
+	public float getThickness() {
+		return thickness;
+	}
+
+
+	public void setThickness(float thickness) {
+		this.thickness = thickness;
 	}
 	
 	
