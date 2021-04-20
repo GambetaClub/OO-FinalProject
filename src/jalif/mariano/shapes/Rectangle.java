@@ -6,10 +6,16 @@ import java.awt.Graphics;
 
 public class Rectangle extends Shape{
 	
+	/**
+	 * This function takes all the items given to it and passes them in to the super constructor, allowing it to create the shape.
+	 */
 	public Rectangle(int x, int y, int height, int width, Color color, boolean isFilled){
 		super(x, y, height, width, color, isFilled);
 	}
 	
+	/**
+	 * Each shape is in charge of drawing itself. It looks to isFilled to decide which function it will use to draw the rectangle.
+	 */
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
 		if(super.getIsFilled()) {

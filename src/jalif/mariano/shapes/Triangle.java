@@ -6,10 +6,16 @@ import java.awt.Graphics;
 
 public class Triangle extends Shape{
 
+	/**
+	 * This function takes all the items given to it and passes them in to the super constructor, allowing it to create the shape.
+	 */
 	public Triangle(int x, int y, int height, int width, Color color, boolean isFilled) {
 		super(x, y, height, width, color, isFilled);
 	}
 	
+	/**
+	 * Each shape is in charge of drawing itself. It looks to isFilled to decide which function it will use to draw the triangle.
+	 */
 	public void draw(Graphics g) {
 		int [] xCoords = {super.getX(), super.getX() - super.getWidth(), super.getX() + super.getWidth()};
 		int [] yCoords = {super.getY(), super.getY() + super.getWidth(), super.getY() + super.getWidth()};

@@ -8,6 +8,9 @@ import jalif.jalif.indwes.myemail.edu.Canvas;
 
 public class MagentaButton implements ActionListener{
 
+	/**
+	 * This method overrides the actionPerformed method and uses it to set the present color selection in the canvas to magenta.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Canvas.setColorSelection(Color.magenta);

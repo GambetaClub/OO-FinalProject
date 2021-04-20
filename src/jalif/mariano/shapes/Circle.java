@@ -5,10 +5,16 @@ import java.awt.Graphics;
 
 public class Circle extends Shape {
 
+	/**
+	 * This function takes all the items given to it and passes them in to the super constructor, allowing it to create the shape.
+	 */
 	public Circle(int x, int y, int height, int width, Color color, boolean isFilled){
 		super(x,y,height,width, color, isFilled);
 	}
 	
+	/**
+	 * Each shape is in charge of drawing itself. It looks to isFilled to decide which function it will use to draw the circle.
+	 */
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
 		if(super.getIsFilled()) {
@@ -18,6 +24,9 @@ public class Circle extends Shape {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	public void resize(int width, int height, int x, int y) {
 		super.setY(y);
