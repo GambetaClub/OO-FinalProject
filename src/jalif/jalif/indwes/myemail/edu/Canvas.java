@@ -15,7 +15,6 @@ public class Canvas extends JPanel {
 
 	private static int maxWindowSize = 600;
 	private ArrayList<Shape> shapes;
-	private ArrayList<Shape> penDots;
 	private static String shapeSelection = "pen";
 	private static int penWidth = 8;
 	private static int defShapeSize = 20;
@@ -26,7 +25,7 @@ public class Canvas extends JPanel {
 	
 	public Canvas() {
 		
-		shapes = new ArrayList<Shape>();
+		setShapes(new ArrayList<Shape>());
 		
 		addMouseMotionListener(new MouseMotionListener() {
 			
@@ -100,7 +99,7 @@ public class Canvas extends JPanel {
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("Mouse released");
 				if(tempShape != null) {
-					shapes.add(tempShape);
+					getShapes().add(tempShape);
 				}
 				tempShape = null;
 			}
@@ -124,6 +123,7 @@ public class Canvas extends JPanel {
 		}
 	}
 	
+
 	
 	public static int getMaxWindowSize() {
 		return maxWindowSize;
@@ -154,7 +154,20 @@ public class Canvas extends JPanel {
 		Canvas.colorSelection = colorSelection;
 		
 	}
+	
+	public int numberOfShapes() {
+		return getShapes().size();
+	}
 
+
+	public ArrayList<Shape> getShapes() {
+		return shapes;
+	}
+
+
+	public void setShapes(ArrayList<Shape> shapes) {
+		this.shapes = shapes;
+	}
 
 	public void undo() {
 		if(shapes.size() == 0) {

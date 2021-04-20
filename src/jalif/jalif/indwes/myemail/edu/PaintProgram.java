@@ -3,27 +3,14 @@ package jalif.jalif.indwes.myemail.edu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import jalif.mariano.colorbuttons.BlackButton;
-import jalif.mariano.colorbuttons.BlueButton;
-import jalif.mariano.colorbuttons.GreenButton;
-import jalif.mariano.colorbuttons.MagentaButton;
-import jalif.mariano.colorbuttons.PinkButton;
-import jalif.mariano.colorbuttons.RedButton;
-import jalif.mariano.colorbuttons.YellowButton;
-import jalif.mariano.shapebuttons.CircleButton;
-import jalif.mariano.shapebuttons.FillButton;
-import jalif.mariano.shapebuttons.LineButton;
-import jalif.mariano.shapebuttons.OutlineButton;
-import jalif.mariano.shapebuttons.RectangleButton;
-import jalif.mariano.shapebuttons.TriangleButton;
-import jalif.mariano.shapebuttons.UndoButton;
-
-public class PaintStartup {
+public class PaintProgram {
 	
 	private static int defaultGridRows = 9;
 	private static int defaultGridColumns = 1;
@@ -81,19 +68,39 @@ public class PaintStartup {
 		 */
 		JButton rectButton = new JButton("Rectangle");
 		shapeToolsPanel.add(rectButton);
-		rectButton.addActionListener(new RectangleButton());
+		rectButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("rectangle");
+			}
+		});
 		
 		JButton circButton = new JButton ("Circle");
 		shapeToolsPanel.add(circButton);
-		circButton.addActionListener(new CircleButton());
+		circButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("circle");
+			}
+		});
 		
 		JButton triButton = new JButton ("Triangle");
 		shapeToolsPanel.add(triButton);
-		triButton.addActionListener(new TriangleButton());
+		triButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("triangle");
+			}
+		});
 		
 		JButton lineButton = new JButton ("Line");
 		shapeToolsPanel.add(lineButton);
-		lineButton.addActionListener(new LineButton());
+		lineButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setShapeSelection("line");
+			}
+		});
 		
 		
 		/*
@@ -102,15 +109,34 @@ public class PaintStartup {
 		 */
 		JButton fillButton = new JButton("Fill");
 		usefulToolPanel.add(fillButton);
-		fillButton.addActionListener(new FillButton());
+		fillButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setIsFilled(true);
+			}
+		});
 		
 		JButton outlineButton = new JButton("No Fill");
 		usefulToolPanel.add(outlineButton);
-		outlineButton.addActionListener(new OutlineButton());
+		outlineButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setIsFilled(false);
+			}
+		});
 		
 		JButton undoButton = new JButton ("Undo");
 		usefulToolPanel.add(undoButton);
-		undoButton.addActionListener(new UndoButton(canvas));
+		undoButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					canvas.undo();
+				}catch(IndexOutOfBoundsException exception) {
+					System.out.println("No item in shape list to undo.");
+				}	
+			}
+		});
 		
 		/*
 		 * The colorPanel is a JPanel which utilizes a GridLayout to organize buttons from the top to the bottom.
@@ -126,37 +152,72 @@ public class PaintStartup {
 		 */
 		JButton blackButton = new JButton ("Black");
 		colorPanel.add(blackButton);
-		blackButton.addActionListener(new BlackButton());
+		blackButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.black);
+			}
+		});
 		
 		JButton yellowButton = new JButton ("Yellow");
 		yellowButton.setForeground(Color.yellow);
 		colorPanel.add(yellowButton);
-		yellowButton.addActionListener(new YellowButton());
+		yellowButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.yellow);
+			}
+		});
 
 		JButton greenButton = new JButton ("Green");
 		greenButton.setForeground(Color.green);
 		colorPanel.add(greenButton);
-		greenButton.addActionListener(new GreenButton());
+		greenButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.green);
+			}
+		});
 
 		JButton blueButton = new JButton ("Blue");
 		blueButton.setForeground(Color.blue);
 		colorPanel.add(blueButton);
-		blueButton.addActionListener(new BlueButton());
+		blueButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.blue);
+			}
+		});
 
 		JButton magentaButton = new JButton ("Magenta");
 		magentaButton.setForeground(Color.magenta);
 		colorPanel.add(magentaButton);
-		magentaButton.addActionListener(new MagentaButton());
+		magentaButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.magenta);
+			}
+		});
 
 		JButton redButton = new JButton ("Red");
 		redButton.setForeground(Color.red);
 		colorPanel.add(redButton);
-		redButton.addActionListener(new RedButton());
+		redButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.red);
+			}
+		});
 		
 		JButton pinkButton = new JButton ("Pink");
 		pinkButton.setForeground(Color.pink);
 		colorPanel.add(pinkButton);
-		pinkButton.addActionListener(new PinkButton());
+		pinkButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Canvas.setColorSelection(Color.pink);
+			}
+		});
 		
 		
 		frame.setVisible(true);
