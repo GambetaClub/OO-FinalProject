@@ -13,7 +13,6 @@ class PaintTest {
 		Canvas c = new Canvas();
 		Rectangle r = new Rectangle(10, 10, 10, 10, Color.blue, true);
 		c.getShapes().add(r);
-	
 	}
 	
 	void test2(){

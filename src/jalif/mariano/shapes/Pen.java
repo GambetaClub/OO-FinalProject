@@ -2,15 +2,24 @@ package jalif.mariano.shapes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Pen extends Shape{
-
-	public Pen(int x, int y, int height, int width, Color color) {
-		super(x, y, height, width, color, false);
+	private ArrayList<Integer> xPoints;
+	private ArrayList<Integer> yPoints;
+	private static int defSize = 0;
+	
+	public Pen(int x, int y, Color color) {
+		super(x, y, defSize, defSize, color, false);
+		this.xPoints = new ArrayList<Integer>();
+		this.yPoints = new ArrayList<Integer>();
+		this.dragger(x, y);
 	}
 
 	@Override
 	public void dragger(int eX, int eY) {
+		xPoints.add(eX);
+		yPoints.add(eY);
 	}
 
 	@Override
@@ -21,7 +30,18 @@ public class Pen extends Shape{
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(super.getColor());
-		g.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+		int newXPoints[] = new int[xPoints.size()];
+		int newYPoints[] = new int[yPoints.size()];
+		for (int i = 0; i < xPoints.size(); i++) {
+			newXPoints[i] = xPoints.get(i);
+			newYPoints[i] = yPoints.get(i);
+		}
+		
+		try {
+			g.drawPolyline(newXPoints, newYPoints, xPoints.size());   
+	    } catch (NullPointerException e) {
+	        System.out.println("xPoints doesn't have any point :(");
+	    }
 	}
 	
 }
